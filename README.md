@@ -3,6 +3,10 @@
 ## Description
 
 <img src="(https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="20" height="20">
+
+<img src="https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="50%" height="50%">
+
+
 ###### This is 100 Days of Coding projects done based on Angela's Udemy Tutorials :student:
 Day 1 to 14 done on Repl.it for basic code :white_check_mark:
 
