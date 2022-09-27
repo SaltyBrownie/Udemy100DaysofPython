@@ -3,7 +3,7 @@
 ## Description
 
 <img src="https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="10%" height="10%">
-                                    <img src="https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="10%" height="10%">
+                                    > <img src="https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="10%" height="10%">
 
 
 ###### This is 100 Days of Coding projects done based on Angela's Udemy Tutorials :student:
