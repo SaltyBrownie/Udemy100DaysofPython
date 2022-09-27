@@ -2,9 +2,9 @@
 > https://nlbsg.udemy.com/course/100-days-of-code/learn/lecture/17837506#overview
 ## Description
 
-<img src="(https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="20" height="20">
+<img src="(https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="200" height="200">
 
-<img src="https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="50%" height="50%">
+<img src="https://quantlabs.net/wp-content/uploads/2019/09/python3.png" width="10%" height="10%">
 
 
 ###### This is 100 Days of Coding projects done based on Angela's Udemy Tutorials :student:
