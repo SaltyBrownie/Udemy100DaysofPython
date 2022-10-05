@@ -3,6 +3,9 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
             'q', 'r', 's', 't', 'u',
             'v', 'w', 'x', 'y', 'z']
 
+char_list = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ') ']
+char_shift = 3
+
 
 # TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 def encrypt(text_input, shift_in):
@@ -44,7 +47,7 @@ while choice:
         print(f"{direction} Error Not a Valid Command!")
 
     Rerun = input("Continue? Type Y/N\n")
-    if Rerun == "Y" and Rerun == "y":
+    if Rerun == "Y" or Rerun == "y":
         continue
     else:
         break
