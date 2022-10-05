@@ -44,7 +44,7 @@ while choice:
         print(f"{direction} Error Not a Valid Command!")
 
     Rerun = input("Continue? Type Y/N\n")
-    if Rerun == "Y" and Rerun == "y":
+    if Rerun == "Y" or Rerun == "y":
         continue
     else:
         break
