@@ -1,0 +1,1 @@
+logo="My Logo in Nice word text"
