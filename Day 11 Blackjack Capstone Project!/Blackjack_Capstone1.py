@@ -8,22 +8,40 @@
 ############### Our Blackjack House Rules #####################
 
 import random as rand
+X=0
 
+def deal_card():
+    # deal cards to player
+    cards_dealer = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    (cards_dealt) = rand.choice(cards_dealer)
+    return cards_dealt
+
+
+number_of_cards_computer = 0
+computer_cards = 0
 ## The deck is unlimited in size.
 ## There are no jokers. 
 ## The Jack/Queen/King all count as 10.
 ## The the Ace can count as 11 or 1.
 ## Use the following list as the deck of cards:
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # JQK as 10s A as 11
 ## The cards in the list have equal probability of being drawn.
 ## Cards are not removed from the deck as they are drawn.
 ## The computer is the dealer.
 # Give Player 2 Cards,
-player_cards = rand.choice(cards)
-print(player_cards)
-print(type(player_cards))
-#Give Computer 2 cards
-computer_cards=rand.choice(cards)
+player_card1 = rand.choice(cards)
+player_card2 = rand.choice(cards)
+player_card_sum = player_card1 + player_card2
+print("player cards are", player_card1, player_card2)
+# Stuck how to store 2 cards here
+
+# Give Computer 2 cards
+while number_of_cards_computer < 2:
+    computer_cards += rand.choice(cards)
+    number_of_cards_computer += 1
+print(computer_cards)
+#deal_card()
+print(deal_card())
 ##################### Hints #####################
 
 # Hint 1: Go to this website and try out the Blackjack game:
@@ -41,6 +59,7 @@ computer_cards=rand.choice(cards)
 # Hint 4: Create a deal_card() function that uses the List below to *return* a random card.
 # 11 is the Ace.
 # cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
 
 # Hint 5: Deal the user and computer 2 cards each using deal_card() and append().
 # user_cards = []
