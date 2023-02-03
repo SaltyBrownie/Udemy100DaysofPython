@@ -7,9 +7,23 @@
 
 ############### Our Blackjack House Rules #####################
 
-import random as rand
-X=0
+## The deck is unlimited in size.
+## There are no jokers. 
+## The Jack/Queen/King all count as 10.
+## The the Ace can count as 11 or 1.
 
+## Use the following list as the deck of cards:
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # JQK as 10s A as 11
+
+## The cards in the list have equal probability of being drawn.
+## Cards are not removed from the deck as they are drawn.
+## The computer is the dealer.
+
+############### Functions  #####################
+import random as rand
+
+
+# Function to deal cards to users
 def deal_card():
     # deal cards to player
     cards_dealer = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -17,18 +31,18 @@ def deal_card():
     return cards_dealt
 
 
+def compare(user_score, computer_score):
+    if user_score > computer_score:
+        print("User Wins ")
+    elif computer_score > user_score:
+        print("Computer Wins")
+    else:
+        print("Draw")
+
+
 number_of_cards_computer = 0
 computer_cards = 0
-## The deck is unlimited in size.
-## There are no jokers. 
-## The Jack/Queen/King all count as 10.
-## The the Ace can count as 11 or 1.
-## Use the following list as the deck of cards:
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # JQK as 10s A as 11
-## The cards in the list have equal probability of being drawn.
-## Cards are not removed from the deck as they are drawn.
-## The computer is the dealer.
-# Give Player 2 Cards,
+# Give Player 2 Cards
 player_card1 = rand.choice(cards)
 player_card2 = rand.choice(cards)
 player_card_sum = player_card1 + player_card2
@@ -40,7 +54,7 @@ while number_of_cards_computer < 2:
     computer_cards += rand.choice(cards)
     number_of_cards_computer += 1
 print(computer_cards)
-#deal_card()
+# deal_card()
 print(deal_card())
 ##################### Hints #####################
 
