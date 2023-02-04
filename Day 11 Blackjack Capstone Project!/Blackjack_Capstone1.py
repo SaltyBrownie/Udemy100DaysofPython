@@ -13,7 +13,7 @@
 ## The the Ace can count as 11 or 1.
 
 ## Use the following list as the deck of cards:
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # JQK as 10s A as 11
+"""cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # JQK as 10s A as 11"""
 
 ## The cards in the list have equal probability of being drawn.
 ## Cards are not removed from the deck as they are drawn.
@@ -21,14 +21,17 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # JQK as 10s A as 11
 
 ############### Functions  #####################
 import random as rand
+import os
 
 
 # Function to deal cards to users
+### deal cards to player
+
+
 def deal_card():
-    # deal cards to player
-    cards_dealer = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-    (cards_dealt) = rand.choice(cards_dealer)
-    return cards_dealt
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card_choose = rand.choice(cards)
+    return card_choose
 
 
 def compare(user_score, computer_score):
@@ -40,22 +43,26 @@ def compare(user_score, computer_score):
         print("Draw")
 
 
-number_of_cards_computer = 0
-computer_cards = 0
-# Give Player 2 Cards
-player_card1 = rand.choice(cards)
-player_card2 = rand.choice(cards)
-player_card_sum = player_card1 + player_card2
-print("player cards are", player_card1, player_card2)
-# Stuck how to store 2 cards here
+# Hint 13: Create a function called compare() and pass in the user_score and computer_score. If the computer and user
+# both have the same score, then it's a draw. If the computer has a blackjack (0), then the user loses. If the user
+# has a blackjack (0), then the user wins. If the user_score is over 21, then the user loses. If the computer_score
+# is over 21, then the computer loses. If none of the above, then the player with the highest score wins.
+def compare(user_score, computer_score):
+    if computer_score == user_score:
+        return "Game is a draw :L"
+    elif user_score > 21:
+        return "Computer wins due to user burst!"
+    elif computer_score > 21:
+        return "User Wins due to computer burst!"
+    elif user_score == 21 or user_score == 0 or user_score > computer_score:
+        return "User Wins!"
+    elif computer_score == 21 or computer_score == 0 or computer_score > user_score:
+        return "Computer wins!"
 
-# Give Computer 2 cards
-while number_of_cards_computer < 2:
-    computer_cards += rand.choice(cards)
-    number_of_cards_computer += 1
-print(computer_cards)
-# deal_card()
-print(deal_card())
+
+## Test Functions
+
+
 ##################### Hints #####################
 
 # Hint 1: Go to this website and try out the Blackjack game:
@@ -72,29 +79,86 @@ print(deal_card())
 
 # Hint 4: Create a deal_card() function that uses the List below to *return* a random card.
 # 11 is the Ace.
-# cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
 
 
 # Hint 5: Deal the user and computer 2 cards each using deal_card() and append().
-# user_cards = []
-# computer_cards = []
+
 
 # Hint 6: Create a function called calculate_score() that takes a List of cards as input
 # and returns the score.
 # Look up the sum() function to help you do this.
 
 # Hint 7: Inside calculate_score() check for a blackjack (a hand with only 2 cards: ace + 10) and return 0 instead of the actual score. 0 will represent a blackjack in our game.
+def calculate_score(cards):
+    if sum(cards) == 21 and len(cards) == 2:
+        print("Blackjack!")  # BlackJack
 
-# Hint 8: Inside calculate_score() check for an 11 (ace). If the score is already over 21, remove the 11 and replace it with a 1. You might need to look up append() and remove().
+        return 0
 
-# Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or if the user's score is over 21, then the game ends.
+    # Hint 8: Inside calculate_score() check for an 11 (ace). If the score is already over 21, remove the 11 and replace it with a 1. You might need to look up append() and remove().
+    if 11 in cards and sum(cards) > 21:
+        cards.remove(11)
+        cards.append(1)  # 3rd card onwards Ace value will be 1 instead of 11
+    return sum(cards)
 
-# Hint 10: If the game has not ended, ask the user if they want to draw another card. If yes, then use the deal_card() function to add another card to the user_cards List. If no, then the game has ended.
+def playgame():
+    user_cards = []
+    computer_cards = []
+    is_game_over = False
 
-# Hint 11: The score will need to be rechecked with every new card drawn and the checks in Hint 9 need to be repeated until the game ends.
+    for _ in range(2):
+        new_card = deal_card()
+        user_cards.append(new_card)  # add value to existing list
+        computer_cards.append(deal_card())
 
-# Hint 12: Once the user is done, it's time to let the computer play. The computer should keep drawing cards as long as it has a score less than 17.
+    while not is_game_over:
 
-# Hint 13: Create a function called compare() and pass in the user_score and computer_score. If the computer and user both have the same score, then it's a draw. If the computer has a blackjack (0), then the user loses. If the user has a blackjack (0), then the user wins. If the user_score is over 21, then the user loses. If the computer_score is over 21, then the computer loses. If none of the above, then the player with the highest score wins.
+        # Hint 9: Call calculate_score(). If the computer or the user has a blackjack (0) or if the user's score is over
+        # 21, then the game ends.
+        user_score = calculate_score(user_cards)
+        computer_score = calculate_score(computer_cards)
+        print(f" Your Cards : {user_cards}, current score : {user_score}")
+        print(f" Computer first Cards : {computer_cards[0]}, Computer current score : {computer_score}")
 
-# Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
+        # Hint 10: If the game has not ended, ask the user if they want to draw another card. If yes, then use the
+        # deal_card() function to add another card to the user_cards List. If no, then the game has ended.
+        if user_score == 0 or computer_score == 0 or user_score < 21:
+            is_game_over = True  # all these values represent black jack
+
+        # While user says yes continue making decisions
+        user_should_deal = input("\nDraw another card? Type y or n to continue\n")  # Ask user draw?
+        if user_should_deal == "y":
+            user_cards.append(deal_card())
+            # Hint 11: The score will need to be rechecked with every new card drawn and the checks in Hint 9 need to
+            # be repeated until the game ends.
+            user_score = calculate_score(user_cards)
+            is_game_over = False
+
+        elif user_should_deal == "n":
+            is_game_over = True
+            print("You choose no!\n````````````````````````````````````\nComputer's Turn!")
+        else:
+            print("Error!")
+            is_game_over = True
+
+    # Hint 12: Once the user is done, it's time to let the computer play. The computer should keep drawing cards as long
+    # as it has a score less than 17.
+    while computer_score != 0 and computer_score < 17:
+        computer_cards.append(deal_card())
+        computer_score = calculate_score(computer_cards)
+        print(f" Computer Cards : {computer_cards}, Computer current score : {computer_score}")
+
+    print(f" \n````````````````````````````````````\nFinal Cards : {user_cards}, Final score : {user_score}")
+    print(f" \n````````````````````````````````````\nComputer Final Cards : {computer_cards}, Final score : {computer_score}\n````````````````````````````````````\n")
+    print("Results:", compare(user_score, computer_score))
+
+# Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game
+# of blackjack and show the logo from art.py.
+Restart_input = input("\nDo you want to play a game of blackjack? Type 'y' or 'n'.\n")
+while Restart_input == "y":
+    #os.system('CLS') #error
+    playgame()
+
+
+
